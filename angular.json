@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "iguana"
+    }
+  },
+  "defaultProject": "iguana",
+  "cli": {
+    "analytics": "fb10b5e9-107c-40cb-b3ba-78de1c30c7fc"
+  }
 }
