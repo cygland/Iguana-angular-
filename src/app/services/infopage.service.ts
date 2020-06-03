@@ -1,27 +1,43 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { InfoPagina } from '../Interfaces/info-pagina.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InfopageService {
 
-  info: any ={};
+  info: InfoPagina = {};
   cargada = false;
+
+  equipo: any [] = [];
 
   constructor( private http: HttpClient ) {
 
-
-    //console.log('servicio de infoPage listo');
-
-    // Leer el archivo json
-    this.http.get('assets/data/data-page.json')
-        .subscribe( resp => {
-
-          this.cargada = true;
-          this.info = resp;
-          console.log(resp);
-
-        });
+    this.cargarInfo ();
+    this.cargarEquipo ();
 }
+private cargarInfo() {
+
+this.http.get('assets/data/data-page.json')
+.subscribe( (resp: InfoPagina) => {
+
+  this.cargada = true;
+  this.info = resp;
+  });
+  }
+
+private cargarEquipo() {
+
+this.http.get('https://iguana-html.firebaseio.com/equipo.json')
+.subscribe( (resp: any[]) => {
+
+    this.equipo = resp;
+    /* console.log(resp); */
+});
+
+}
+
+
+
 }

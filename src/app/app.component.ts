@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { InfopageService } from './services/infopage.service';
+import { ProductosService } from './services/productos.service';
 
 
 @Component({
@@ -9,8 +10,8 @@ import { InfopageService } from './services/infopage.service';
 })
 export class AppComponent {
 
-  // tslint:disable-next-line: no-shadowed-variable
-  constructor( public InfoPageService: InfopageService) {
+  constructor( public InfoPageService: InfopageService,
+                public ProductosService: ProductosService ) {
 
   }
 }
